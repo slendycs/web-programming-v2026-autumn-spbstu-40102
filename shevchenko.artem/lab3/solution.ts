@@ -1,12 +1,16 @@
-export function mergeArrays(arr1: number[], arr2: number[]): number[] {
-  const sortedArr1: number[] = arr1.slice().sort((x, y) => x - y);
-  const sortedArr2: number[] = arr2.slice().sort((x, y) => x - y);
-  const mergedArr: number[] = [];
+export function mergeArrays<T extends number | string>(
+  arr1: T[],
+  arr2: T[],
+): T[] {
+  const cmp = (x: T, y: T): number => (x < y ? -1 : x > y ? 1 : 0);
+  const sortedArr1: T[] = arr1.slice().sort(cmp);
+  const sortedArr2: T[] = arr2.slice().sort(cmp);
+  const mergedArr: T[] = [];
   let i: number = 0;
   let j: number = 0;
 
   while (i < sortedArr1.length || j < sortedArr2.length) {
-    let curr: number;
+    let curr: T;
 
     if (
       j >= sortedArr2.length ||
