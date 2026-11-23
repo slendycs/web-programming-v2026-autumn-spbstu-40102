@@ -33,7 +33,7 @@
 ## Запуск
 
 ```bash
-cd lab5
+cd shevchenko.artem/lab5
 npm install
 npm run dev
 ```
